@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=>, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class = "paint"></div>
+    <div class = "floor"></div>
+    <div class = "furniture"></div>
+    <div class = "totalCost"></div>
+    <script>
+        function addPaintAndSupplies(totalCost, callback) {
+            let cost = prompt("Enter the cost for paint and supplies:");
+            cost = parseFloat(cost);
+            if (cost>200) {
+                alert("Max cost is $200");
+              
+            }
+            if (cost>100)
+            cost *= 1.1;
+
+            let paintArea = document.querySelector(".paint");
+            paintArea.innerHTML = `Paint $ ${cost.toFixed(2)}`;
+
+            callback(totalCost+cost);
+            
+            return (totalCost + cost);
+        }
+function addFloorCoverings(totalCost,callback) {
+    let cost=prompt("Enter the cost of floor coverings:");
+    cost = parseFloat(cost);
+    if (cost>2000) {
+        alert ("Max cost is $2000");
+        
+    }
+    if (cost<500)
+    cost -=.15;
+let floorArea = document.querySelector(".floor");
+floorArea.innerHTML = `Floor Coverings $ ${cost.toFixed(2)}`;
+callback(totalCost+cost);
+    
+return (totalCost + cost);
+}
+
+function addFurniture(totalCost,callback) {
+    let cost = prompt("Enter the cost of furniture:");
+    cost = parseFloat(cost);
+    if (cost > 2000) {
+        alert("Max cost is $2000");
+       
+    } 
+    if (cost<500)
+    cost -=.10;
+
+    let furnitureArea = document.querySelector(".furniture");
+    furnitureArea.innerHTML = `Furniture $ ${cost.toFixed(2)}`;
+    callback(totalCost + cost);
+    
+    return (totalCost + cost);
+
+}
+
+const updateTotals = (cost) => {
+    let totaslArea = document.querySelector(".totalCost");
+    totaslArea.innerHTML = `Total $ ${cost.toFixed(2)}`;
+
+
+}
+let totalCost = 0;
+
+totalCost = addPaintAndSupplies(totalCost, updateTotals);
+totalCost = addFloorCoverings(totalCost, updateTotals);
+totalCost = addFurniture(totalCost, updateTotals);
+
+    </script>
+</body>
+</html>
